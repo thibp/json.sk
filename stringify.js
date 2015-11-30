@@ -78,7 +78,10 @@ module.exports = function (obj, opts) {
             var out = [];
             for (var i = 0; i < keys.length; i++) {
                 var key = keys[i];
-                var value = stringify(node, key, node[key], level+1);
+                var value = node[key];
+                if (!Number.isInteger(node[key])){
+                    value = stringify(node, key, node[key], level + 1);
+                }
 
                 if(!value) continue;
 
